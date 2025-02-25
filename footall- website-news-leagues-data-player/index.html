@@ -1,0 +1,32 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Hat-Trick</title>
+  </head>
+  <body>
+    <div id="header" class="hidden animate-slide-in-left">
+      <h1>Hat-Trick</h1>
+      <p>all football news and league ranking</p>
+      <div>
+        <button id="btnhome">Home</button>
+        <button id="btnnews" onclick="opennews()">News</button>
+        <button id="btnleague" onclick="openleague()">League</button>
+      </div>
+    </div>
+
+    <div id="windonews" class="hidden animate-slide-in-right">
+      <button id="btnnews" onclick="opennews()">show more</button>
+      <div id="news-container"></div>
+    </div>
+
+    <div id="windoleague" class="hidden animate-slide-in-bottom">
+      <button id="btnleague" onclick="openleague()">show more</button>
+    </div>
+    <footer></footer>
+    <script src="./news-script.js"></script>
+    <script src="./leagues.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

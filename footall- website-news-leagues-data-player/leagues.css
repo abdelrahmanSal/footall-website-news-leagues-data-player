@@ -1,0 +1,143 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #c4c2c2;
+  margin: 0;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: -webkit-fill-available;
+  background-color: rgba(91, 183, 245, 0.8);
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  height: 2rem;
+}
+
+.nav-logo h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1c1e1f;
+  margin: 0;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #444343;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #898e8f;
+}
+
+.nav-links .active {
+  color: #edeff0;
+  border-bottom: 2px solid #21d1fd;
+}
+.container {
+  background-image: url(./img/336632926_325790ec-8dc4-4de9-beeb-7e11c761f465.jpg);
+  background-size: cover; /* Changed from contain to cover for better coverage */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Added semi-transparent background color */
+  backdrop-filter: blur(5px);
+  color: #fff;
+  padding: 1.25rem;
+  border-radius: 0.625rem;
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+  width: 90%;
+  margin-top: 3rem;
+  animation: fadeIn 0.5s ease-in-out;
+  font-size: 1.2rem;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  width: 10rem;
+  height: 3rem;
+  font-size: 1rem;
+  padding: 0.625rem 1.25rem;
+  margin: 0 0.625rem;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+  transition: 0.5s ease;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.25rem;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 0.0625rem solid #ddd;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+tbody tr {
+  animation: fadeIn 0.5s ease-in-out;
+}

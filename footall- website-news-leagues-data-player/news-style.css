@@ -1,0 +1,132 @@
+/* General Styles */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+ background-image: url(./img/336632926_325790ec-8dc4-4de9-beeb-7e11c761f465.jpg);
+ background-size: contain;
+ backdrop-filter: blur(5px);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  max-width: 100%;
+
+}
+
+/* Navigation Bar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ width: -webkit-fill-available;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.nav-logo h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #21d1fd;
+  margin: 0;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #21d1fd;
+}
+
+.nav-links .active {
+  color: #21d1fd;
+  border-bottom: 2px solid #21d1fd;
+}
+
+/* News Container */
+#news-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  width: 90%;
+  margin-top: 6rem;
+  padding: 1rem;
+}
+
+.news {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+ height: 22REM;
+
+}
+
+.news:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.news img {
+  width: 100%;
+  border-radius: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.news h2 {
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+  color: #43e9ff;
+  background-color: #ffffff60;
+border-radius: 1rem;
+
+  padding: 0.5rem;
+}
+
+.news p {
+  font-size: 1rem;
+  color: #000000;
+  margin: 0.5rem 0;
+}
+
+/* Video Styling */
+video {
+  width: 100%;
+  border-radius: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+/* Responsive Design */

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Standings</title>
+  <link rel="stylesheet" href="leagues.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #008cba;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #0b3d91;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: #ffd700;
+      color: #0b3d91;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #ffcc00;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #fff;
+    }
+
+    th {
+      background: #ffd700;
+      color: #0b3d91;
+    }
+
+    .match {
+      padding: 10px;
+      background: #005f73;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .match h3 {
+      margin: 0;
+      color: #ffd700;
+    }
+
+    .match p {
+      margin: 5px 0;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #ffd700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Football Standings</h1>
+    <div class="buttons">
+      <button onclick="egyptionleague()">Egyptian League</button>
+      <button onclick="laligaleague()">La Liga</button>
+      <button onclick="primerleague()">Premier League</button>
+      <button onclick="championeleague()">Champions League</button>
+    </div>
+
+    <table id="standingsTable">
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Team</th>
+          <th>Played</th>
+          <th>Won</th>
+          <th>Drawn</th>
+          <th>Lost</th>
+          <th>Goals For</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Rows will be inserted here by JavaScript -->
+      </tbody>
+    </table>
+
+    <h2>Recent & Upcoming Matches</h2>
+    <div id="matches"></div>
+  </div>
+
+  <script> 
+    function egyptionleague() {
+      const api = "https://webws.365scores.com/web/standings/?appTypeId=5&langId=27&timezoneName=America/New_York&userCountryId=131&competitions=552&live=true&withSeasonsFilter=true";
+      fetch(api)
+        .then((response) => response.json())
+        .then((data) => {
+          const standings = data.standings?.[0] || {};
+          const rows = standings.rows || [];
+          
+          const table = document.getElementById("standingsTable").getElementsByTagName('tbody')[0];
+          const matchesDiv = document.getElementById("matches");
+          table.innerHTML = "";
+          matchesDiv.innerHTML = "";
+          
+          rows.forEach((team) => {
+            const position = team.position;
+            const teamName = team.competitor.name;
+            const played = team.gamePlayed;
+            const won = team.gamesWon;
+            const drawn = team.gamesEven;
+            const lost = team.gamesLost;
+            const goalsFor = team.for;
+            const points = team.points;
+
+            const tr = document.createElement("tr");
+
+            tr.innerHTML = `
+              <td>${position}</td>
+              <td><button onclick="showTeamMatches('${teamName}')">${teamName}</button></td>
+              <td>${played}</td>
+              <td>${won}</td>
+              <td>${drawn}</td>
+              <td>${lost}</td>
+              <td>${goalsFor}</td>
+              <td>${points}</td>
+            `;
+
+            table.appendChild(tr);
+          });
+
+          window.showTeamMatches = (teamName) => {
+            matchesDiv.innerHTML = `<h2>Matches for ${teamName}</h2>`;
+            rows.forEach((team) => {
+              if (team.competitor.name === teamName && team.detailedRecentForm) {
+                team.detailedRecentForm.forEach((match) => {
+                  matchesDiv.innerHTML += `
+                    <div class="match">
+                      <h3>${match.competitionDisplayName}</h3>
+                      <p>Date: ${new Date(match.startTime).toLocaleString()}</p>
+                      <p>
+                        ${match.homeCompetitor.name} (${match.homeCompetitor.score}) vs 
+                        ${match.awayCompetitor.name} (${match.awayCompetitor.score})
+                      </p>
+                      <p>Winner: ${match.winner === 1 ? match.homeCompetitor.name : match.awayCompetitor.name}</p>
+                      <hr>
+                    </div>
+                  `;
+                });
+              }
+            });
+          };
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
+  </script>
+</body>
+</html>

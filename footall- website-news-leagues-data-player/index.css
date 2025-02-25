@@ -1,0 +1,154 @@
+html {
+  font-size: 16px;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url(./img/336632926_325790ec-8dc4-4de9-beeb-7e11c761f465.jpg);
+  background-size: contain;
+  backdrop-filter: blur(5px);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  max-width: 100%;
+}
+
+button {
+  background-color: #21d1fdad;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 7rem;
+  height: 4rem;
+  margin: 1rem;
+}
+
+
+
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 35rem;
+  background-color: rgba(49, 55, 58, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+#windonews {
+  display: flex;
+align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+  height: 33rem;
+  overflow: hidden;
+  background-color: rgba(148, 203, 240, 0.63);
+}
+#news-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  width: 90%;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.news {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 22rem;
+  margin-bottom: 2rem;
+}
+.news img {
+  width: 100%;
+  border-radius: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+/* Hide elements initially */
+#header,
+#windonews,
+#windoleague {
+  opacity: 0;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide-in from left animation */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide-in from right animation */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide-in from bottom animation */
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply animations to elements */
+.animate-fade-in {
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 2s ease-in-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 2s ease-in-out forwards;
+}
+
+.animate-slide-in-bottom {
+  animation: slideInBottom 2s ease-in-out forwards;
+}

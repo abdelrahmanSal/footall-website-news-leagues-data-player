@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Standings</title>
+  <link rel="stylesheet" href="leagues.css">
+</head>
+<body>
+  <body>
+    <nav>
+      <div class="nav-logo">
+          <h1>Modern News</h1>
+      </div>
+      <ul class="nav-links">
+          <li><a href="./home.html">Home</a></li>
+          <li><a href="./new.html" class="active">News</a></li>
+          <li><a href="./leagues">Information</a></li>
+      </ul>
+  </nav>
+    <div class="container">
+      <h1>Football Standings</h1>
+      <div class="buttons">
+        <button onclick="egyptionleague()">Egyptian League</button>
+        <button onclick="laligaleague()">La Liga</button>
+        <button onclick="primerleague()">Premier League</button>
+        <button onclick="championeleague()">Champions League</button>
+      </div>
+  
+      <table id="standingsTable">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Team</th>
+            <th>Played</th>
+            <th>Won</th>
+            <th>Drawn</th>
+            <th>Lost</th>
+            <th>Goals For</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be inserted here by JavaScript -->
+        </tbody>
+      </table>
+  
+    </div>
+  
+  <script src="leagues.js"></script>
+</body>
+</html>

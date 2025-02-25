@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Matches</title>
+</head>
+<body>
+
+<h1>All Matches</h1>
+<div id="matches"></div>
+
+<script>
+    fetch('https://webws.365scores.com/web/standings/?appTypeId=5&langId=27&timezoneName=Africa/Cairo&userCountryId=131&competitions=572&live=false&withSeasonsFilter=true')
+    .then((response) => response.json())
+    .then((data) => {
+        const standings = data.standings?.[0] || {};
+        const matchesDiv = document.getElementById("matches");
+
+        standings.rows?.forEach((team) => {
+            matchesDiv.innerHTML += `<h2>${team.competitor.name}</h2>`;
+            
+            // Show recent matches
+            matchesDiv.innerHTML += `<h3>Ended Matches:</h3>`;
+            if (team.detailedRecentForm?.length) {
+                team.detailedRecentForm.forEach((match) => {
+                    matchesDiv.innerHTML += `
+                        <div>
+                            <h4>${match.competitionDisplayName}</h4>
+                            <p>Date: ${new Date(match.startTime).toLocaleString()}</p>
+                            <p>${match.homeCompetitor.name} (${match.homeCompetitor.score}) vs ${match.awayCompetitor.name} (${match.awayCompetitor.score})</p>
+                            <p>Winner: ${match.winner === 1 ? match.homeCompetitor.name : match.awayCompetitor.name}</p>
+                            <hr>
+                        </div>
+                    `;
+                });
+            } else {
+                matchesDiv.innerHTML += `<p>No ended matches available.</p>`;
+            }
+
+            // Show next match
+            matchesDiv.innerHTML += `<h3>Next Match:</h3>`;
+            if (team.nextMatch) {
+                matchesDiv.innerHTML += `
+                    <div>
+                        <h4>${team.nextMatch.competitionDisplayName}</h4>
+                        <p>Date: ${new Date(team.nextMatch.startTime).toLocaleString()}</p>
+                        <p>${team.nextMatch.homeCompetitor.name} vs ${team.nextMatch.awayCompetitor.name}</p>
+                        <p>Status: ${team.nextMatch.statusText}</p>
+                        <hr>
+                    </div>
+                `;
+            } else {
+                matchesDiv.innerHTML += `<p>No upcoming matches.</p>`;
+            }
+        });
+    })
+    .catch((error) => {
+        console.error("Error fetching data:", error);
+    });
+</script>
+
+</body>
+</html>
